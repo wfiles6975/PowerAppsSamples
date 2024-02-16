@@ -1,0 +1,121 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "www_lmsusers",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "www_lmsuser",
+    "MaxGetRowsCount": 500,
+    "Name": "LMSUsers",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number",
+      "www_email": "Email",
+      "www_lmscourseuserprogress_Person_www_lmsuser": "LMSCourseUserProgresses",
+      "www_lmslessonuserprogress_Person_www_lmsuser": "LMSLessonUserProgresses",
+      "www_lmsrole": "LMSRole",
+      "www_lmsuser_AsyncOperations": "System Jobs",
+      "www_lmsuser_BulkDeleteFailures": "Bulk Delete Failures",
+      "www_lmsuser_DuplicateBaseRecord": "Duplicate Records (www_lmsuser_DuplicateBaseRecord)",
+      "www_lmsuser_DuplicateMatchingRecord": "Duplicate Records (www_lmsuser_DuplicateMatchingRecord)",
+      "www_lmsuser_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "www_lmsuser_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "www_lmsuser_ProcessSession": "Process Sessions",
+      "www_lmsuser_SyncErrors": "Sync Errors",
+      "www_lmsuserid": "LMSUser",
+      "www_name": "Name"
+    },
+    "PreferredName": "LMSUsers",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "LMSUsers (Views)",
+    "Name": "_www_lmsuser_views",
+    "RelatedEntityName": "LMSUsers",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "03dd8478-79aa-4fbb-9253-ce15cce92674": "LMSUser Advanced Find View",
+      "15b0a0f6-8e51-4403-9d4c-6923c89b44a9": "Inactive LMSUsers",
+      "9d8af10d-3122-4d3f-8162-bfed4d3ef4ab": "LMSUser Associated View",
+      "c6ff4b61-472d-4ac7-aebf-3e6085fbe378": "LMSUser Lookup View",
+      "d038222d-62a3-4890-bca1-18c3577f8c33": "Active LMSUsers"
+    }
+  },
+  {
+    "DisplayName": "Status (LMSUsers)",
+    "Name": "www_lmsuser_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "LMSUsers"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "LMSUsers",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (LMSUsers)",
+    "Name": "www_lmsuser_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "LMSUsers"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "LMSUsers",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "LMSRole (LMSUsers)",
+    "Name": "www_lmsuser_www_lmsrole",
+    "OptionSetInfoNameMapping": {
+      "0": "Admin",
+      "1": "User"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "www_lmsrole",
+        "OptionSetReferenceEntityName": "LMSUsers"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "www_lmsrole",
+    "RelatedEntityName": "LMSUsers",
+    "Type": "OptionSetInfo"
+  }
+]

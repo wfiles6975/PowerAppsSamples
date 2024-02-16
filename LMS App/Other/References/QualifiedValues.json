@@ -1,0 +1,46 @@
+{
+  "QualifiedValues": [
+    {
+      "Kind": "default.cds_www_lmscoursecategory_forms",
+      "Namespace": "LMSCourseCategories (Forms)",
+      "Values": {
+        "Information": "d0142cef-2f35-4a33-b77d-b7e53e1baa6d"
+      }
+    },
+    {
+      "Kind": "default.cds_www_lmscourseuserprogress_forms",
+      "Namespace": "LMSCourseUserProgresses (Forms)",
+      "Values": {
+        "Information": "a81db635-bd6d-49ce-b83f-ff41237b9f9a"
+      }
+    },
+    {
+      "Kind": "default.cds_www_lmsuser_forms",
+      "Namespace": "LMSUsers (Forms)",
+      "Values": {
+        "Information": "9892601a-936b-43b1-a8d9-cb70a7b89b1d"
+      }
+    },
+    {
+      "Kind": "default.cds_www_lmscourse_forms",
+      "Namespace": "LMSCourses (Forms)",
+      "Values": {
+        "Information": "6aa9fe13-fefc-4823-aec1-6c725ae1ac7c"
+      }
+    },
+    {
+      "Kind": "default.cds_www_lmslessonuserprogress_forms",
+      "Namespace": "LMSLessonUserProgresses (Forms)",
+      "Values": {
+        "Information": "5ef05a5d-4e63-4074-8ad6-da80b2beadc3"
+      }
+    },
+    {
+      "Kind": "default.cds_www_lmslesson_forms",
+      "Namespace": "LMSLessons (Forms)",
+      "Values": {
+        "Information": "0ed8b7e8-6067-4921-91f0-5dbfea3d9952"
+      }
+    }
+  ]
+}

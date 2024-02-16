@@ -1,0 +1,127 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "www_lmslessons",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "www_lmslesson",
+    "MaxGetRowsCount": 500,
+    "Name": "LMSLessons",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "cr47d_attachments": "Attachments",
+      "cr47d_quizurl": "QuizURL",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number",
+      "www_lessoncontent": "LessonContent",
+      "www_LessonCourse": "LessonCourse",
+      "www_lessonlength": "LessonLength",
+      "www_lessontype": "LessonType",
+      "www_lessonvideo": "LessonVideo",
+      "www_lmslesson_AsyncOperations": "System Jobs",
+      "www_lmslesson_BulkDeleteFailures": "Bulk Delete Failures",
+      "www_lmslesson_DuplicateBaseRecord": "Duplicate Records (www_lmslesson_DuplicateBaseRecord)",
+      "www_lmslesson_DuplicateMatchingRecord": "Duplicate Records (www_lmslesson_DuplicateMatchingRecord)",
+      "www_lmslesson_FileAttachments": "FileAttachments",
+      "www_lmslesson_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "www_lmslesson_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "www_lmslesson_ProcessSession": "Process Sessions",
+      "www_lmslesson_SyncErrors": "Sync Errors",
+      "www_lmslessonid": "LMSLesson",
+      "www_lmslessonuserprogress_Lesson_www_lmslesso": "LMSLessonUserProgresses",
+      "www_name": "LessonName",
+      "www_uniqueid": "UniqueID"
+    },
+    "PreferredName": "LMSLessons",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "LMSLessons (Views)",
+    "Name": "_www_lmslesson_views",
+    "RelatedEntityName": "LMSLessons",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "4bc7efca-d703-4d6e-bfba-82a2cf40a07b": "Active LMSLessons",
+      "57b22a13-ee0a-495a-9320-d8cc6ca7b861": "Inactive LMSLessons",
+      "8928e266-813d-4861-8709-8863eae654b4": "LMSLesson Lookup View",
+      "b43dd4ef-7af1-423a-80f0-a15bf3af6da4": "LMSLesson Associated View",
+      "c2ce881d-cf5a-4278-93b4-5fd462d9354a": "LMSLesson Advanced Find View"
+    }
+  },
+  {
+    "DisplayName": "Status (LMSLessons)",
+    "Name": "www_lmslesson_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "LMSLessons"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "LMSLessons",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (LMSLessons)",
+    "Name": "www_lmslesson_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "LMSLessons"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "LMSLessons",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "LessonType (LMSLessons)",
+    "Name": "www_lmslesson_www_lessontype",
+    "OptionSetInfoNameMapping": {
+      "0": "Video",
+      "1": "Text"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "www_lessontype",
+        "OptionSetReferenceEntityName": "LMSLessons"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "www_lessontype",
+    "RelatedEntityName": "LMSLessons",
+    "Type": "OptionSetInfo"
+  }
+]

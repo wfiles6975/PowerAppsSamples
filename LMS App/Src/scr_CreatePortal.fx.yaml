@@ -1,0 +1,78 @@
+scr_CreatePortal As screen:
+
+    com_NavigationVertical_7 As com_NavigationVertical:
+        NavigationItems: |-
+            =//varNavigationMenuUser
+            varNavigationMenuAdmin
+
+    Label2 As label:
+        Align: =Align.Right
+        Color: =varWhiteColor
+        Fill: =varNavyColor
+        FontWeight: =FontWeight.Bold
+        Height: =100
+        PaddingRight: =50
+        Size: =32
+        Text: ="CREATE LMS CONTENT"
+        Width: =1740
+        X: =180
+        ZIndex: =2
+
+    Button1 As button:
+        BorderThickness: =0
+        Fill: =varPurpleColor
+        Height: =170
+        HoverColor: =varWhiteColor
+        HoverFill: =varNavyColor
+        OnSelect: =Navigate(scr_CreateCourse)
+        RadiusBottomLeft: =90
+        RadiusBottomRight: =90
+        RadiusTopLeft: =90
+        RadiusTopRight: =90
+        Size: =32
+        Text: ="CREATE COURSE"
+        Width: =684
+        X: =748
+        Y: =265
+        ZIndex: =3
+
+    Button1_1 As button:
+        BorderThickness: =0
+        Fill: =varPurpleColor
+        Height: =170
+        HoverColor: =varWhiteColor
+        HoverFill: =varNavyColor
+        OnSelect: =Navigate(scr_CreateLesson)
+        RadiusBottomLeft: =90
+        RadiusBottomRight: =90
+        RadiusTopLeft: =90
+        RadiusTopRight: =90
+        Size: =32
+        Text: ="CREATE LESSON"
+        Width: =684
+        X: =748
+        Y: =560
+        ZIndex: =4
+
+    Label6 As label:
+        Align: =Align.Center
+        FontWeight: =FontWeight.Semibold
+        Height: =60
+        Size: =18
+        Text: ="Select this to begin to build out your course"
+        Width: =578
+        X: =801
+        Y: =435
+        ZIndex: =5
+
+    Label6_1 As label:
+        Align: =Align.Center
+        FontWeight: =FontWeight.Semibold
+        Height: =72
+        Size: =18
+        Text: ="Select this to add lessons to your course"
+        Width: =602
+        X: =801
+        Y: =730
+        ZIndex: =6
+

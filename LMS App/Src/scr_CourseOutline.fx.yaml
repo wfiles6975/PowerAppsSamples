@@ -1,0 +1,360 @@
+scr_CourseOutline As screen:
+
+    "CourseOutlineGallery As gallery.'BrowseLayout_Vertical_TwoTextVariant_ver5.0'":
+        DelayItemLoading: =true
+        DisplayMode: |-
+            =//Determines if the lessons are clickable by the user dependant on them enrolling on the selected course
+            If(!IsBlank(LookUp(LMSCourseUserProgresses, Person.Email = varCurrentUser.Email && Course.UniqueID = varSelectedCourses.UniqueID)), DisplayMode.Edit, DisplayMode.Disabled)
+        Fill: =RGBA(241, 244, 249, 1)
+        Height: =581
+        Items: |-
+            =//Finds a list of lessons associated with the selected course and sorts them via date created
+            SortByColumns(Filter(LMSLessons, LessonCourse.CourseName = varSelectedCourses.CourseName),"createdon",SortOrder.Ascending)
+        Layout: =Layout.Vertical
+        LoadingSpinner: =LoadingSpinner.Data
+        OnSelect: |-
+            =//Sets a variable containing a record of the selected lesson
+            Set(varSelectedLesson, ThisItem);
+            
+            //Determines where to send the user based on the context of the lesson
+            If(varSelectedLesson.LessonType in "Video", Navigate(scr_LessonVideo), Navigate(scr_LessonText));
+            
+            //Create a record of lesson progress if lesson has not been started by the user
+            If(IsBlank(LookUp(LMSLessonUserProgresses, Person.Email = varCurrentUser.Email && Lesson.UniqueID = ThisItem.UniqueID)), Patch(LMSLessonUserProgresses, {Name: GUID(), Course: LookUp(LMSCourses, UniqueID = varSelectedCourses.UniqueID), Lesson: LookUp(LMSLessons, UniqueID = varSelectedLesson.UniqueID), LessonStartTime: Now(), Person: varCurrentUser}))
+        TemplatePadding: =0
+        TemplateSize: =90
+        Width: =1188
+        X: =732
+        Y: =499
+        ZIndex: =1
+
+        Title1 As label:
+            Color: =RGBA(0, 0, 0, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =Self.Size * 1.8
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =18
+            Text: =ThisItem.LessonName
+            VerticalAlign: =VerticalAlign.Top
+            Width: =Parent.TemplateWidth - 86
+            X: =16
+            Y: =(Parent.TemplateHeight - (Self.Size * 1.8 + Subtitle1.Size * 1.8)) / 2
+            ZIndex: =1
+
+        Subtitle1 As label:
+            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+            Height: =Self.Size * 1.8
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =16
+            Text: =ThisItem.LessonLength & " minutes"
+            VerticalAlign: =VerticalAlign.Top
+            Width: =Title1.Width
+            X: =Title1.X
+            Y: =Title1.Y + Title1.Height
+            ZIndex: =2
+
+        NextArrow1 As icon.ChevronRight:
+            AccessibleLabel: =Self.Tooltip
+            Color: =RGBA(166, 166, 166, 1)
+            Height: =50
+            Icon: =Icon.ChevronRight
+            OnSelect: =Select(Parent)
+            PaddingBottom: =16
+            PaddingLeft: =16
+            PaddingRight: =16
+            PaddingTop: =16
+            Tooltip: ="View item details"
+            Width: =50
+            X: =Parent.TemplateWidth - Self.Width - 12
+            Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+            ZIndex: =3
+
+        Separator1 As rectangle:
+            Height: =8
+            OnSelect: =Select(Parent)
+            Width: =Parent.TemplateWidth
+            Y: =Parent.TemplateHeight - Self.Height
+            ZIndex: =4
+
+        Rectangle1 As rectangle:
+            Height: =Parent.TemplateHeight - Separator1.Height
+            OnSelect: =Select(Parent)
+            Visible: =ThisItem.IsSelected
+            Width: =4
+            ZIndex: =5
+
+        Icon1 As icon.CheckBadge:
+            Color: =RGBA(99, 139, 44, 1)
+            Height: =32
+            Icon: =Icon.CheckBadge
+            OnSelect: =Select(Parent)
+            Visible: =If(LookUp(LMSLessonUserProgresses, Person.Email = varCurrentUser.Email && Lesson.UniqueID = ThisItem.UniqueID). LessonCompleted = true, true, false)
+            Width: =32
+            X: =1094
+            Y: =30
+            ZIndex: =6
+
+    com_NavigationVertical_3 As com_NavigationVertical:
+        NavigationItems: |-
+            =//varNavigationMenuUser
+            varNavigationMenuAdmin
+        ZIndex: =2
+
+    img_CourseImage As image:
+        Height: =450
+        Image: =If(IsBlank(varSelectedCourses.CourseImage.Full),MissingCourseImage,varSelectedCourses.CourseImage.Full)
+        ImagePosition: =ImagePosition.Fill
+        RadiusBottomLeft: =20
+        RadiusBottomRight: =20
+        RadiusTopLeft: =20
+        RadiusTopRight: =20
+        Width: =450
+        X: =231
+        Y: =89
+        ZIndex: =3
+
+    lbl_CourseName As label:
+        Color: =varPrimaryColor
+        FontWeight: =FontWeight.Bold
+        Height: =101
+        PaddingLeft: =0
+        Size: =35
+        Text: =varSelectedCourses.CourseName
+        VerticalAlign: =VerticalAlign.Top
+        Width: =1163
+        X: =732
+        Y: =105
+        ZIndex: =4
+
+    lbl_CourseDescription As label:
+        Color: =varPrimaryColor
+        Height: =195
+        Overflow: =Overflow.Scroll
+        PaddingLeft: =0
+        Size: =14
+        Text: =varSelectedCourses.CourseDescription
+        VerticalAlign: =VerticalAlign.Top
+        Width: =1156
+        X: =730
+        Y: =255
+        ZIndex: =5
+
+    Rating1 As rating:
+        Default: =varSelectedCourses.CourseDifficulty
+        DisabledFill: =Self.Fill
+        DisplayMode: =DisplayMode.Edit
+        FocusedBorderColor: =Self.BorderColor
+        Height: =45
+        HoverFill: =Self.Fill
+        PressedFill: =Self.Fill
+        Width: =200
+        X: =415
+        Y: =585
+        ZIndex: =6
+
+    Label11_1 As label:
+        AutoHeight: =true
+        Color: =varPrimaryColor
+        Height: =45
+        PaddingLeft: =20
+        Size: =18
+        Text: =Text(varSelectedCourses.CourseReleaseDate,DateTimeFormat.ShortDate)
+        Width: =182
+        X: =424
+        Y: =645
+        ZIndex: =7
+
+    lbl_Minutes As label:
+        AutoHeight: =true
+        Color: =varPrimaryColor
+        Height: =45
+        PaddingLeft: =20
+        Size: =18
+        Text: =varSelectedCourses.CourseLength & " minutes"
+        Width: =182
+        X: =350
+        Y: =703
+        ZIndex: =8
+
+    lbl_Difficulty As label:
+        AutoHeight: =true
+        Color: =varPrimaryColor
+        FontWeight: =FontWeight.Bold
+        Height: =45
+        Size: =18
+        Text: ="DIFFICULTY"
+        Width: =168
+        X: =265
+        Y: =590
+        ZIndex: =9
+
+    lbl_Length As label:
+        AutoHeight: =true
+        Color: =varPrimaryColor
+        FontWeight: =FontWeight.Bold
+        Height: =45
+        Size: =18
+        Text: ="LENGTH"
+        Width: =138
+        X: =265
+        Y: =703
+        ZIndex: =10
+
+    lbl_ReleaseDate As label:
+        AutoHeight: =true
+        Color: =varPrimaryColor
+        FontWeight: =FontWeight.Bold
+        Height: =45
+        Size: =18
+        Text: ="RELEASE DATE"
+        Width: =192
+        X: =265
+        Y: =645
+        ZIndex: =11
+
+    lbl_About As label:
+        Color: =varPrimaryColor
+        FontWeight: =FontWeight.Bold
+        Height: =32
+        PaddingLeft: =0
+        Size: =18
+        Text: ="ABOUT THIS COURSE"
+        Width: =304
+        X: =730
+        Y: =223
+        ZIndex: =12
+
+    lbl_LessonCount As label:
+        Color: =varPrimaryColor
+        FontWeight: =FontWeight.Bold
+        Height: =32
+        PaddingLeft: =0
+        Size: =18
+        Text: ="LESSONS " & "(" & varSelectedCourses.LessonCount & ")"
+        Width: =228
+        X: =733
+        Y: =463
+        ZIndex: =13
+
+    btn_StartCourse As button:
+        BorderThickness: =0
+        DisplayMode: |-
+            =//Stops the user from selecting the button again if the course has been started
+            If(IsBlank(LookUp(LMSCourseUserProgresses, Person.Email = varCurrentUser.Email && Course.UniqueID = varSelectedCourses.UniqueID)),DisplayMode.Edit, DisplayMode.Disabled)
+        Fill: =varPurpleColor
+        FontWeight: =FontWeight.Bold
+        Height: =94
+        HoverColor: =varWhiteColor
+        HoverFill: =varNavyColor
+        OnSelect: |-
+            =//Creates a new record against the user for the current course
+            Patch(LMSCourseUserProgresses, {Name:GUID(), Course: LookUp(LMSCourses, UniqueID = varSelectedCourses.UniqueID), CourseEnrolmentTime: 
+            Now(), Person: varCurrentUser})
+        RadiusBottomLeft: =90
+        RadiusBottomRight: =90
+        RadiusTopLeft: =90
+        RadiusTopRight: =90
+        Size: =21
+        Text: |-
+            =//Changes the text of the button if the user has started the course
+            If(IsBlank(LookUp(LMSCourseUserProgresses, Person.Email = varCurrentUser.Email && Course.UniqueID = varSelectedCourses.UniqueID)),"START COURSE", "COURSE IN PROGRESS")
+        Visible: |-
+            =//Removes the button entirely once a user has completed the course
+            If(LookUp(LMSCourseUserProgresses, Person.Email = varCurrentUser.Email && Course.UniqueID = varSelectedCourses.UniqueID).CourseCompleted = true, false, true)
+        Width: =450
+        X: =231
+        Y: =872
+        ZIndex: =14
+
+    btn_MarkComplete As button:
+        BorderThickness: =0
+        Color: =varWhiteColor
+        DisplayMode: |-
+            =//Disables the button on two scenarios, when the course is completed & before a user has enrolled on a course
+            If(LookUp(LMSCourseUserProgresses, Person.Email = varCurrentUser.Email && Course.UniqueID = varSelectedCourses.UniqueID).CourseCompleted = true || IsBlank(LookUp(LMSCourseUserProgresses, Course.UniqueID = varSelectedCourses.UniqueID && Person.Email = varCurrentUser.Email).CourseEnrolmentTime), DisplayMode.Disabled, DisplayMode.Edit)
+        Fill: =varNavyColor
+        FontWeight: =FontWeight.Bold
+        Height: =94
+        HoverColor: =varWhiteColor
+        HoverFill: =varNavyColor
+        OnSelect: |-
+            =//Finds the Course that has been started and sets it to completed
+            Patch(LMSCourseUserProgresses, LookUp(LMSCourseUserProgresses, Course.UniqueID = varSelectedCourses.UniqueID && Person.Email = varCurrentUser.Email), {CourseCompletedTime: Now(), CourseCompleted: true})
+        RadiusBottomLeft: =90
+        RadiusBottomRight: =90
+        RadiusTopLeft: =90
+        RadiusTopRight: =90
+        Size: =21
+        Text: |-
+            =//Changes the text value of the button when the course has been completed
+            If(LookUp(LMSCourseUserProgresses, Person.Email = varCurrentUser.Email && Course.UniqueID = varSelectedCourses.UniqueID).CourseCompleted = true, "COURSE COMPLETE", "MARK COMPLETE")
+        Width: =450
+        X: =231
+        Y: =986
+        ZIndex: =15
+
+    lbl_Length_1 As label:
+        Color: =varPrimaryColor
+        FontWeight: =FontWeight.Bold
+        Height: =36
+        Size: =18
+        Text: ="QUIZ"
+        Width: =85
+        X: =265
+        Y: =758
+        ZIndex: =19
+
+    LessonBar As group:
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =19
+
+        "Progress1 As 'Progress Bar'":
+            BasePaletteColor: =
+            DisplayMode: =DisplayMode.Edit
+            Height: =61
+            Thickness: ='Progress.Thickness'.Large
+            Value: =CountRows(Filter(LMSLessonUserProgresses, Course.UniqueID = varSelectedCourses.UniqueID, Person.Email = varCurrentUser.Email, LessonCompleted = true)) / varSelectedCourses.LessonCount * 100
+            Width: =1122
+            X: =733
+            Y: =68
+            ZIndex: =16
+
+        Label4 As label:
+            FontWeight: =FontWeight.Bold
+            Size: =16
+            Text: =CountRows(Filter(LMSLessonUserProgresses, Course.UniqueID = varSelectedCourses.UniqueID, Person.Email = varCurrentUser.Email, LessonCompleted = true)) & "/" & varSelectedCourses.LessonCount & " Lessons"
+            X: =733
+            Y: =49
+            ZIndex: =17
+
+        Label4_1 As label:
+            Align: =Align.Right
+            FontWeight: =FontWeight.Bold
+            Size: =16
+            Text: =RoundUp(CountRows(Filter(LMSLessonUserProgresses, Course.UniqueID = varSelectedCourses.UniqueID, Person.Email = varCurrentUser.Email, LessonCompleted = true)) / varSelectedCourses.LessonCount * 100,0) & "% Complete"
+            X: =1744
+            Y: =49
+            ZIndex: =18
+
+    lbl_Minutes_1 As label:
+        Color: =varPrimaryColor
+        Height: =89
+        PaddingLeft: =20
+        Size: =18
+        Text: =Text(varSelectedLesson.QuizURL)
+        Width: =303
+        X: =339
+        Y: =758
+        ZIndex: =20
+

@@ -1,0 +1,54 @@
+App As appinfo:
+    BackEnabled: =true
+    OnStart: |-
+        =//If user doesn’t exist, add a new record filling out the user’s information
+        If(IsBlank(LookUp(LMSUsers, Email = User().Email)), Patch(LMSUsers, {Name: User().FullName, Email: User().Email}));
+        
+        //Sets a variable storing the users record
+        Set(varCurrentUser, LookUp(LMSUsers, Email = User().Email));
+        
+        //Checks user’s role and sets Boolean variable to determine if they have admin access
+        If(Text(varCurrentUser.LMSRole) = "Admin", Set(varAdminAccess, true), Set(varAdminAccess, false));
+        
+        //Sets variables storing colors that the app can use
+        Set(varPrimaryColor, ColorValue("#262A76"));
+        Set(varSecondaryColor, ColorFade(varPrimaryColor, 20%));
+        Set(varTertiaryColor, ColorFade(varPrimaryColor, 90%));
+        
+        //Navy
+        Set(varNavyColor, ColorValue("#262A76"));
+        //Purple
+        Set(varPurpleColor, ColorValue("#6D0043"));
+        //Light Blue
+        Set(varLightBlueColor, ColorValue("#2F8AC3"));
+        //Gray
+        Set(varGrayColor, ColorValue("#605E5C"));
+        //White
+        Set(varWhiteColor, ColorValue("#FFFFFF"));
+        
+        //Defines a table of menu items that will be visible for a user
+        Set(varNavigationMenuUser, Table(
+            {Label: "HOME", Icon: Icon.Home, Screen: scr_Home},
+            {Label: "ALL COURSES", Icon: Icon.Ribbon, Screen: scr_AllCourses},
+            {Label: "PROGRESS", Icon: Icon.LogJournal, Screen: scr_UserProgress}
+            ));
+        
+        //Defines a table of menu items that will be visible for an admin
+        Set(varNavigationMenuAdmin, Table(
+            {Label: "HOME", Icon: Icon.Home, Screen: scr_Home},
+            {Label: "ALL COURSES", Icon: Icon.Ribbon, Screen: scr_AllCourses},
+            {Label: "PROGRESS", Icon: Icon.LogJournal, Screen: scr_UserProgress},
+            {Label: "CREATE", Icon: Icon.Add, Screen: scr_CreatePortal}
+            ));
+        
+        //Defines which table to use for a navigation component dependant on the user’s role
+        If(varAdminAccess = true, Set(varNavigationItems, varNavigationMenuAdmin), Set(varNavigationItems, varNavigationMenuUser))
+    Theme: =PowerAppsTheme
+
+    Host As hostControl.DefaultHostControlVariant:
+        OnCancel: =false
+        OnEdit: =false
+        OnNew: =false
+        OnSave: =false
+        OnView: =false
+

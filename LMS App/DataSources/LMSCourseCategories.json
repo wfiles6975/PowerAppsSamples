@@ -1,0 +1,100 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "www_lmscoursecategories",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "www_lmscoursecategory",
+    "MaxGetRowsCount": 500,
+    "Name": "LMSCourseCategories",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number",
+      "www_category": "Name",
+      "www_lmscourse_CourseCategory_www_lmscoursecat": "LMSCourses",
+      "www_lmscoursecategory_AsyncOperations": "System Jobs",
+      "www_lmscoursecategory_BulkDeleteFailures": "Bulk Delete Failures",
+      "www_lmscoursecategory_DuplicateBaseRecord": "Duplicate Records (www_lmscoursecategory_DuplicateBaseRecord)",
+      "www_lmscoursecategory_DuplicateMatchingRecord": "Duplicate Records (www_lmscoursecategory_DuplicateMatchingRecord)",
+      "www_lmscoursecategory_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "www_lmscoursecategory_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "www_lmscoursecategory_ProcessSession": "Process Sessions",
+      "www_lmscoursecategory_SyncErrors": "Sync Errors",
+      "www_lmscoursecategoryid": "LMSCourseCategory",
+      "www_name": "Category",
+      "www_uniqueid": "UniqueID"
+    },
+    "PreferredName": "LMSCourseCategories",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "LMSCourseCategories (Views)",
+    "Name": "_www_lmscoursecategory_views",
+    "RelatedEntityName": "LMSCourseCategories",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "0f8e2c5d-75cd-4b8b-8006-b1aaa2ba729d": "LMSCourseCategory Associated View",
+      "1f99ff96-1ec9-487c-9899-83381a75da96": "LMSCourseCategory Advanced Find View",
+      "2cf0f897-2e95-4b31-aabc-875e0b921eb4": "LMSCourseCategory Lookup View",
+      "2f3d9882-2aa3-40cc-9c20-6ed18fa18cb2": "Active LMSCourseCategories",
+      "e5275079-cf4a-4f79-9ee7-83814c321246": "Inactive LMSCourseCategories"
+    }
+  },
+  {
+    "DisplayName": "Status (LMSCourseCategories)",
+    "Name": "www_lmscoursecategory_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "LMSCourseCategories"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "LMSCourseCategories",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (LMSCourseCategories)",
+    "Name": "www_lmscoursecategory_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "LMSCourseCategories"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "LMSCourseCategories",
+    "Type": "OptionSetInfo"
+  }
+]

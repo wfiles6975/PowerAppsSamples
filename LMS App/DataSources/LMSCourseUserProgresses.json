@@ -1,0 +1,122 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "www_lmscourseuserprogresses",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "www_lmscourseuserprogress",
+    "MaxGetRowsCount": 500,
+    "Name": "LMSCourseUserProgresses",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number",
+      "www_Course": "Course",
+      "www_coursecompleted": "CourseCompleted",
+      "www_coursecompletedtime": "CourseCompletedTime",
+      "www_courseenrolmenttime": "CourseEnrolmentTime",
+      "www_lmscourseuserprogress_AsyncOperations": "System Jobs",
+      "www_lmscourseuserprogress_BulkDeleteFailures": "Bulk Delete Failures",
+      "www_lmscourseuserprogress_DuplicateBaseRecord": "Duplicate Records (www_lmscourseuserprogress_DuplicateBaseRecord)",
+      "www_lmscourseuserprogress_DuplicateMatchingRecord": "Duplicate Records (www_lmscourseuserprogress_DuplicateMatchingRecord)",
+      "www_lmscourseuserprogress_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "www_lmscourseuserprogress_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "www_lmscourseuserprogress_ProcessSession": "Process Sessions",
+      "www_lmscourseuserprogress_SyncErrors": "Sync Errors",
+      "www_lmscourseuserprogressid": "LMSCourseUserProgress",
+      "www_name": "Name",
+      "www_Person": "Person"
+    },
+    "PreferredName": "LMSCourseUserProgresses",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "LMSCourseUserProgresses (Views)",
+    "Name": "_www_lmscourseuserprogress_views",
+    "RelatedEntityName": "LMSCourseUserProgresses",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "0ada488e-2e04-400b-95bb-1ce8e2d79cb5": "LMSCourseUserProgress Advanced Find View",
+      "19ed1a07-27b8-4d01-ad06-2b10c86d8bc3": "Inactive LMSCourseUserProgresses",
+      "2450b509-96d4-4f65-9e38-d03ad9b4001e": "LMSCourseUserProgress Associated View",
+      "99b90c10-1663-4ed4-8199-a9bccc73c6bd": "Active LMSCourseUserProgresses",
+      "e6da0b65-226e-45f4-95fb-4bc0d0a6b7a5": "LMSCourseUserProgress Lookup View"
+    }
+  },
+  {
+    "DisplayName": "Status (LMSCourseUserProgresses)",
+    "Name": "www_lmscourseuserprogress_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "LMSCourseUserProgresses"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "LMSCourseUserProgresses",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (LMSCourseUserProgresses)",
+    "Name": "www_lmscourseuserprogress_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "LMSCourseUserProgresses"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "LMSCourseUserProgresses",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "CourseCompleted (LMSCourseUserProgresses)",
+    "Name": "www_lmscourseuserprogress_www_coursecompleted",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "www_coursecompleted",
+        "OptionSetReferenceEntityName": "LMSCourseUserProgresses"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "www_coursecompleted",
+    "RelatedEntityName": "LMSCourseUserProgresses",
+    "Type": "OptionSetInfo"
+  }
+]

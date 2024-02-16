@@ -1,0 +1,132 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "www_lmscourses",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "www_lmscourse",
+    "MaxGetRowsCount": 500,
+    "Name": "LMSCourses",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number",
+      "www_CourseCategory": "CourseCategory",
+      "www_coursedescription": "CourseDescription",
+      "www_coursedifficulty": "CourseDifficulty",
+      "www_coursefeatured": "CourseFeatured",
+      "www_courseimage": "CourseImage",
+      "www_courseimageid": "www_CourseImageId",
+      "www_courselength": "CourseLength",
+      "www_coursereleasedate": "CourseReleaseDate",
+      "www_lessoncount": "LessonCount",
+      "www_lessoncount_date": "LessonCount (Last Updated On)",
+      "www_lessoncount_state": "LessonCount (State)",
+      "www_lmscourse_AsyncOperations": "System Jobs",
+      "www_lmscourse_BulkDeleteFailures": "Bulk Delete Failures",
+      "www_lmscourse_DuplicateBaseRecord": "Duplicate Records (www_lmscourse_DuplicateBaseRecord)",
+      "www_lmscourse_DuplicateMatchingRecord": "Duplicate Records (www_lmscourse_DuplicateMatchingRecord)",
+      "www_lmscourse_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "www_lmscourse_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "www_lmscourse_ProcessSession": "Process Sessions",
+      "www_lmscourse_SyncErrors": "Sync Errors",
+      "www_lmscourseid": "LMSCourse",
+      "www_lmscourseuserprogress_Course_www_lmscours": "LMSCourseUserProgresses",
+      "www_lmslesson_LessonCourse_www_lmscourse": "LMSLessons",
+      "www_lmslessonuserprogress_Course_www_lmscours": "LMSLessonUserProgresses",
+      "www_name": "CourseName",
+      "www_uniqueid": "UniqueID"
+    },
+    "PreferredName": "LMSCourses",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "LMSCourses (Views)",
+    "Name": "_www_lmscourse_views",
+    "RelatedEntityName": "LMSCourses",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "11eb5fab-df24-46f9-a158-fe25519f04bb": "Inactive LMSCourses",
+      "68dc0082-d29e-4107-978c-bce767b9f45d": "LMSCourse Advanced Find View",
+      "6f8ccad3-a954-455c-a532-d10d2525ff8c": "LMSCourse Associated View",
+      "e437e95d-9475-436f-83f8-b9788d4dc35f": "Active LMSCourses",
+      "fb3067ad-547c-4908-bbf1-e8fd4c1ce542": "LMSCourse Lookup View"
+    }
+  },
+  {
+    "DisplayName": "Status (LMSCourses)",
+    "Name": "www_lmscourse_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "LMSCourses"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "LMSCourses",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (LMSCourses)",
+    "Name": "www_lmscourse_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "LMSCourses"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "LMSCourses",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "CourseFeatured (LMSCourses)",
+    "Name": "www_lmscourse_www_coursefeatured",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "www_coursefeatured",
+        "OptionSetReferenceEntityName": "LMSCourses"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "www_coursefeatured",
+    "RelatedEntityName": "LMSCourses",
+    "Type": "OptionSetInfo"
+  }
+]

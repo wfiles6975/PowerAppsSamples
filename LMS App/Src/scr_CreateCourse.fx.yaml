@@ -1,0 +1,593 @@
+scr_CreateCourse As screen:
+
+    com_NavigationVertical_8 As com_NavigationVertical:
+        NavigationItems: |-
+            =//varNavigationMenuUser
+            varNavigationMenuAdmin
+
+    Label2_1 As label:
+        Align: =Align.Right
+        Color: =varWhiteColor
+        Fill: =varNavyColor
+        FontWeight: =FontWeight.Bold
+        Height: =100
+        PaddingRight: =50
+        Size: =32
+        Text: ="CREATE COURSE"
+        Width: =1740
+        X: =180
+        ZIndex: =2
+
+    Form1 As form:
+        DataSource: =LMSCourses
+        DefaultMode: =FormMode.New
+        Height: =860
+        OnSuccess: =ResetForm(Form1); Navigate(scr_CreateLesson)
+        Width: =1740
+        X: =180
+        Y: =104
+        ZIndex: =3
+
+        CourseImage_DataCard1 As typedDataCard.addLargePictureCard:
+            BorderStyle: =BorderStyle.Solid
+            BorderThickness: =0
+            DataField: ="www_courseimage"
+            Default: =ThisItem.CourseImage
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@LMSCourses],DataSourceInfo.DisplayName,"www_courseimage")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            Required: =false
+            Update: =Image1.Image
+            Width: =1740
+            X: =0
+            Y: =0
+            ZIndex: =1
+
+            DataCardKey7 As label:
+                AutoHeight: =true
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Size: =16
+                Text: ="Course Image"
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            Image1 As image:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                DisplayMode: =Parent.DisplayMode
+                Height: =AddPicture1.Height
+                Image: =If(IsBlank(AddPicture1.Media), Parent.Default, AddPicture1.Media)
+                Tooltip: =Parent.DisplayName
+                Width: =AddPicture1.Width
+                X: =AddPicture1.X
+                Y: =AddPicture1.Y
+                ZIndex: =2
+
+            AddPicture1 As addMedia:
+                BorderThickness: =1
+                Height: =200
+                Size: =20
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey7.Y + DataCardKey7.Height + 5
+                ZIndex: =3
+
+            ErrorMessage6 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =Image1.Y + Image1.Height
+                ZIndex: =4
+
+            StarVisible6 As label:
+                Align: =Align.Center
+                Height: =DataCardKey7.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey7.Y
+                ZIndex: =5
+
+        CourseName_DataCard1 As typedDataCard.textualEditCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="www_name"
+            Default: =ThisItem.CourseName
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@LMSCourses],DataSourceInfo.DisplayName,"www_name")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =139
+            MaxLength: =DataSourceInfo([@LMSCourses], DataSourceInfo.MaxLength, "www_name")
+            Required: =false
+            Update: =DataCardValue3.Text
+            Width: =1740
+            X: =0
+            Y: =1
+            ZIndex: =1
+
+            DataCardKey3 As label:
+                AutoHeight: =true
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Size: =16
+                Text: ="Course Name"
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue3 As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                BorderThickness: =1
+                Default: =Parent.Default
+                DelayOutput: =true
+                DisplayMode: =Parent.DisplayMode
+                HoverFill: =varTertiaryColor
+                MaxLength: =Parent.MaxLength
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey3.Y + DataCardKey3.Height + 5
+                ZIndex: =2
+
+            ErrorMessage2 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue3.Y + DataCardValue3.Height
+                ZIndex: =3
+
+            StarVisible2 As label:
+                Align: =Align.Center
+                Height: =DataCardKey3.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey3.Y
+                ZIndex: =4
+
+        CourseDescription_DataCard1 As typedDataCard.textualMultiLineEditCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="www_coursedescription"
+            Default: =ThisItem.CourseDescription
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@LMSCourses],DataSourceInfo.DisplayName,"www_coursedescription")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            Required: =false
+            Update: =DataCardValue5.Text
+            Width: =1740
+            X: =0
+            Y: =2
+            ZIndex: =1
+
+            DataCardKey5 As label:
+                AutoHeight: =true
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Size: =16
+                Text: ="Course Description"
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue5 As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                BorderThickness: =1
+                Default: =Parent.Default
+                DelayOutput: =true
+                DisplayMode: =Parent.DisplayMode
+                Height: =80
+                HoverFill: =varTertiaryColor
+                Mode: =TextMode.MultiLine
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey5.Y + DataCardKey5.Height + 5
+                ZIndex: =2
+
+            ErrorMessage4 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue5.Y + DataCardValue5.Height
+                ZIndex: =3
+
+            StarVisible4 As label:
+                Align: =Align.Center
+                Height: =DataCardKey5.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey5.Y
+                ZIndex: =4
+
+        CourseDifficulty_DataCard1 As typedDataCard.numberEditCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="www_coursedifficulty"
+            Default: =ThisItem.CourseDifficulty
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@LMSCourses],DataSourceInfo.DisplayName,"www_coursedifficulty")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            Required: =false
+            Update: =Value(DataCardValue6.Text)
+            Width: =580
+            X: =0
+            Y: =3
+            ZIndex: =1
+
+            DataCardKey6 As label:
+                AutoHeight: =true
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Size: =16
+                Text: ="Course Difficulty from 1 (easy) to 5 (hard)"
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue6 As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                BorderThickness: =1
+                Default: =Parent.Default
+                DelayOutput: =true
+                DisplayMode: =Parent.DisplayMode
+                Format: =TextFormat.Number
+                HoverFill: =varTertiaryColor
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey6.Y + DataCardKey6.Height + 5
+                ZIndex: =2
+
+            ErrorMessage5 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue6.Y + DataCardValue6.Height
+                ZIndex: =3
+
+            StarVisible5 As label:
+                Align: =Align.Center
+                Height: =DataCardKey6.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey6.Y
+                ZIndex: =4
+
+        CourseLength_DataCard1 As typedDataCard.numberEditCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="www_courselength"
+            Default: =ThisItem.CourseLength
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@LMSCourses],DataSourceInfo.DisplayName,"www_courselength")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            Required: =false
+            Update: =Value(DataCardValue7.Text)
+            Width: =580
+            X: =1
+            Y: =3
+            ZIndex: =1
+
+            DataCardKey8 As label:
+                AutoHeight: =true
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Size: =16
+                Text: ="Course Length (in minutes)"
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue7 As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                BorderThickness: =1
+                Default: =Parent.Default
+                DelayOutput: =true
+                DisplayMode: =Parent.DisplayMode
+                Format: =TextFormat.Number
+                HoverFill: =varTertiaryColor
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey8.Y + DataCardKey8.Height + 5
+                ZIndex: =2
+
+            ErrorMessage7 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue7.Y + DataCardValue7.Height
+                ZIndex: =3
+
+            StarVisible7 As label:
+                Align: =Align.Center
+                Height: =DataCardKey8.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey8.Y
+                ZIndex: =4
+
+        CourseReleaseDate_DataCard1 As typedDataCard.dateTimeEditCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="www_coursereleasedate"
+            Default: =Today()
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@LMSCourses],DataSourceInfo.DisplayName,"www_coursereleasedate")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            Required: =false
+            Update: =DateValue1.SelectedDate
+            Width: =580
+            X: =2
+            Y: =3
+            ZIndex: =1
+
+            DataCardKey9 As label:
+                AutoHeight: =true
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Size: =16
+                Text: ="Course Release Date"
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DateValue1 As datepicker:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                BorderThickness: =1
+                DefaultDate: =Parent.Default
+                DisplayMode: =Parent.DisplayMode
+                EndYear: =Year(Today())+100
+                IsEditable: =true
+                PaddingBottom: =0
+                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                StartYear: =1899
+                Tooltip: =Parent.DisplayName
+                Width: =520
+                X: =30
+                Y: =DataCardKey9.Y + DataCardKey9.Height + 5
+                ZIndex: =2
+
+            ErrorMessage8 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =
+                ZIndex: =6
+
+            StarVisible8 As label:
+                Align: =Align.Center
+                Height: =DataCardKey9.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey9.Y
+                ZIndex: =7
+
+        CourseCategory_DataCard1 As typedDataCard.comboBoxEditCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="www_CourseCategory"
+            Default: =ThisItem.CourseCategory
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@LMSCourses],DataSourceInfo.DisplayName,"www_CourseCategory")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            Required: =false
+            Update: =DataCardValue4.Selected
+            Width: =580
+            X: =0
+            Y: =4
+            ZIndex: =1
+
+            DataCardKey4 As label:
+                AutoHeight: =true
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Size: =16
+                Text: ="Course Category"
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue4 As combobox:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                BorderThickness: =1
+                DefaultSelectedItems: |-
+                    =//Sets the latest create category as the default category for courses
+                    First(SortByColumns(LMSCourseCategories,"createdon",SortOrder.Descending))
+                DisplayFields: =["www_name"]
+                DisplayMode: =Parent.DisplayMode
+                HoverFill: =varTertiaryColor
+                IsSearchable: =false
+                Items: =Choices([@LMSCourses].CourseCategory)
+                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                SearchFields: =["www_name"]
+                SearchItems: =[]
+                SelectMultiple: =false
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey4.Y + DataCardKey4.Height + 5
+                ZIndex: =2
+
+            ErrorMessage3 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue4.Y + DataCardValue4.Height
+                ZIndex: =3
+
+            StarVisible3 As label:
+                Align: =Align.Center
+                Height: =DataCardKey4.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey4.Y
+                ZIndex: =4
+
+        DataCard1 As typedDataCard.blankCard:
+            BorderStyle: =BorderStyle.Solid
+            BorderThickness: =0
+            DisplayMode: =DisplayMode.Edit
+            Fill: =varTertiaryColor
+            Height: =156
+            Width: =1160
+            X: =1
+            Y: =4
+            ZIndex: =1
+
+            tin_NewCategoryLabel As text:
+                BorderThickness: =1
+                Default: =""
+                HintText: ="Type new categories..."
+                Width: =520
+                X: =25
+                Y: =87
+                ZIndex: =1
+
+            Button2 As button:
+                BorderThickness: =0
+                Fill: =varPurpleColor
+                HoverColor: =varWhiteColor
+                HoverFill: =varNavyColor
+                OnSelect: |-
+                    =//Adds a new category to the table defined by the text input box
+                    Patch(LMSCourseCategories, {Category: tin_NewCategoryLabel.Text}); Reset(tin_NewCategoryLabel); Refresh(LMSCourses)
+                Text: ="Add Category"
+                Width: =520
+                X: =603
+                Y: =87
+                ZIndex: =2
+
+            Label3 As label:
+                FontWeight: =FontWeight.Bold
+                Height: =42
+                Size: =21
+                Text: ="Create New Categories"
+                Width: =332
+                X: =399
+                Y: =18
+                ZIndex: =3
+
+    Submit_Course As button:
+        BorderThickness: =0
+        Fill: =varPurpleColor
+        FontWeight: =FontWeight.Bold
+        Height: =100
+        HoverColor: =varWhiteColor
+        HoverFill: =varNavyColor
+        OnSelect: =SubmitForm(Form1)
+        RadiusBottomLeft: =90
+        RadiusBottomRight: =90
+        RadiusTopLeft: =90
+        RadiusTopRight: =90
+        Size: =21
+        Text: ="SUBMIT COURSE"
+        Width: =400
+        X: =721
+        Y: =980
+        ZIndex: =4
+
