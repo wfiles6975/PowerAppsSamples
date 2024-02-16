@@ -11,7 +11,7 @@
   },
   "Properties": {
     "AppCreationSource": "AppFromScratch",
-    "AppDescription": "",
+    "AppDescription": "Create a comprehensive learning experience with NCU LMS. This app allows you to organize courses, lessons, and user progress. With features like course enrollment, course completion, and lesson tracking, you can easily manage your e-learning platform.",
     "AppPreviewFlagsMap": {
       "aibuilderserviceenrollment": false,
       "allowmultiplescreensincanvaspages": false,
